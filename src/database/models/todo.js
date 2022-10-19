@@ -42,6 +42,7 @@ export default function (sequelize) {
   }, {
     sequelize,
     modelName: 'todo',
+    tableName: 'todo',
   });
   return Todo;
 }
