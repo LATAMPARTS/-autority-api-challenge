@@ -14,3 +14,24 @@ export const getAll = async (req, res) => {
     return res.status(500).json({ success: false, message: error.message });
   }
 };
+
+
+/**
+ * POST /task
+ * @param req
+ * @param res
+ * @returns {Promise<*>}
+ */
+export const createOne = async (req, res) => {
+  try {
+    const {
+      name, description, author, isComplete,
+    } = req.body;
+    const todo = await db.models.todo.create({
+      name, description, author, isComplete,
+    });
+    return res.json({ success: true, data: todo });
+  } catch (error) {
+    return res.status(500).json({ success: false, message: error.message });
+  }
+};
