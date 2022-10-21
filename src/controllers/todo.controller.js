@@ -93,7 +93,7 @@ export const deleteOne = async (req, res) => {
       return res.status(404).json({ success: false, message: 'Todo not found' });
     }
     await todo.destroy();
-    return res.status(204);
+    return res.status(204).json({ success: true });
   } catch (error) {
     return res.status(500).json({ success: false, message: error.message });
   }
